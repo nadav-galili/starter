@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, Text as RNText, View } from 'react-native';
 import { useTheme } from '../src/hooks';
+import { Text } from '../src/components';
 import type { ThemeMode } from '../src/constants';
 
 export default function HomeScreen() {
@@ -9,13 +10,21 @@ export default function HomeScreen() {
   const themeModes: ThemeMode[] = ['system', 'light', 'dark'];
 
   return (
-    <View className="flex-1 items-center justify-center bg-background">
-      <Text className="text-2xl font-bold mb-2 text-foreground">
-        Welcome to Starter
-      </Text>
-      <Text className="text-base text-muted-foreground mb-8">
+    <View className="flex-1 items-center justify-center bg-background px-4">
+      <Text variant="h1" className="mb-2">Welcome to Starter</Text>
+      <Text variant="body" className="text-muted-foreground mb-4">
         Your Expo Router app is ready!
       </Text>
+
+      <View className="mb-8 items-center">
+        <Text variant="label" className="text-muted-foreground mb-2">Typography Variants</Text>
+        <Text variant="h1">Heading 1</Text>
+        <Text variant="h2">Heading 2</Text>
+        <Text variant="h3">Heading 3</Text>
+        <Text variant="body">Body text</Text>
+        <Text variant="caption">Caption text</Text>
+        <Text variant="label">Label text</Text>
+      </View>
 
       <View className="flex-row gap-2">
         {themeModes.map((mode) => (
@@ -28,7 +37,7 @@ export default function HomeScreen() {
                 : 'bg-secondary'
             }`}
           >
-            <Text
+            <RNText
               className={`capitalize ${
                 themeMode === mode
                   ? 'text-primary-foreground'
@@ -36,7 +45,7 @@ export default function HomeScreen() {
               }`}
             >
               {mode}
-            </Text>
+            </RNText>
           </Pressable>
         ))}
       </View>
