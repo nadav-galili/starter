@@ -3,10 +3,10 @@
   "sessionId": "bb9922ca-1009-4039-8eb4-5f808b6b57fc",
   "status": "running",
   "startedAt": "2026-02-05T13:42:09.664Z",
-  "updatedAt": "2026-02-05T14:08:06.771Z",
-  "currentIteration": 9,
+  "updatedAt": "2026-02-05T14:08:06.808Z",
+  "currentIteration": 10,
   "maxIterations": 15,
-  "tasksCompleted": 9,
+  "tasksCompleted": 10,
   "isPaused": false,
   "agentPlugin": "claude",
   "trackerState": {
@@ -71,8 +71,8 @@
       {
         "id": "US-023",
         "title": "Create Example Mutation Hook",
-        "status": "open",
-        "completedInSession": false
+        "status": "completed",
+        "completedInSession": true
       }
     ]
   },
@@ -166,6 +166,16 @@
       "durationMs": 125406,
       "startedAt": "2026-02-05T14:03:55.645Z",
       "endedAt": "2026-02-05T14:06:01.051Z"
+    },
+    {
+      "iteration": 10,
+      "status": "completed",
+      "taskId": "US-023",
+      "taskTitle": "Create Example Mutation Hook",
+      "taskCompleted": true,
+      "durationMs": 124672,
+      "startedAt": "2026-02-05T14:06:02.098Z",
+      "endedAt": "2026-02-05T14:08:06.770Z"
     }
   ],
   "skippedTaskIds": [],
