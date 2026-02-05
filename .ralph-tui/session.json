@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "sessionId": "897e6ff9-685d-4815-be56-842e3dd80180",
+  "status": "running",
+  "startedAt": "2026-02-05T12:38:12.841Z",
+  "updatedAt": "2026-02-05T12:41:59.599Z",
+  "currentIteration": 0,
+  "maxIterations": 15,
+  "tasksCompleted": 0,
+  "isPaused": false,
+  "agentPlugin": "claude",
+  "trackerState": {
+    "plugin": "json",
+    "prdPath": "./tasks/prd.json",
+    "totalTasks": 13,
+    "tasks": [
+      {
+        "id": "US-001",
+        "title": "Initialize Expo Project with TypeScript",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-002",
+        "title": "Establish Folder Structure",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-003",
+        "title": "Configure Expo Router Navigation",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-004",
+        "title": "Set Up NativeWind with Tailwind CSS",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-005",
+        "title": "Implement Dark Mode Theming",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-006",
+        "title": "Create Base UI Components - Typography",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-007",
+        "title": "Create Base UI Components - Button",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-008",
+        "title": "Create Base UI Components - Input",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-009",
+        "title": "Create Base UI Components - Card",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-010",
+        "title": "Create Base UI Components - Container",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-011",
+        "title": "Define Repository Pattern Interfaces",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-012",
+        "title": "Set Up Zustand Store Foundation",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-013",
+        "title": "Create Home Screen",
+        "status": "open",
+        "completedInSession": false
+      }
+    ]
+  },
+  "iterations": [],
+  "skippedTaskIds": [],
+  "cwd": "/Users/nadavgalili/personal_projects/react-native-apps/starter",
+  "activeTaskIds": [],
+  "subagentPanelVisible": false
+}
