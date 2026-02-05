@@ -3,10 +3,10 @@
   "sessionId": "bb9922ca-1009-4039-8eb4-5f808b6b57fc",
   "status": "running",
   "startedAt": "2026-02-05T13:42:09.664Z",
-  "updatedAt": "2026-02-05T13:43:52.068Z",
-  "currentIteration": 0,
+  "updatedAt": "2026-02-05T13:43:53.135Z",
+  "currentIteration": 1,
   "maxIterations": 15,
-  "tasksCompleted": 0,
+  "tasksCompleted": 1,
   "isPaused": false,
   "agentPlugin": "claude",
   "trackerState": {
@@ -17,8 +17,8 @@
       {
         "id": "US-014",
         "title": "Install and Configure React Hook Form",
-        "status": "open",
-        "completedInSession": false
+        "status": "completed",
+        "completedInSession": true
       },
       {
         "id": "US-015",
@@ -76,9 +76,22 @@
       }
     ]
   },
-  "iterations": [],
+  "iterations": [
+    {
+      "iteration": 1,
+      "status": "completed",
+      "taskId": "US-014",
+      "taskTitle": "Install and Configure React Hook Form",
+      "taskCompleted": true,
+      "durationMs": 100038,
+      "startedAt": "2026-02-05T13:42:12.027Z",
+      "endedAt": "2026-02-05T13:43:52.065Z"
+    }
+  ],
   "skippedTaskIds": [],
   "cwd": "/Users/nadavgalili/personal_projects/react-native-apps/starter",
-  "activeTaskIds": [],
+  "activeTaskIds": [
+    "US-015"
+  ],
   "subagentPanelVisible": false
 }
