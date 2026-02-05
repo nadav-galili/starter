@@ -92,3 +92,67 @@ export function fetchExamples(
     params: params as Record<string, string | number | boolean | undefined>,
   });
 }
+
+// ============================================================================
+// Mutation Types
+// ============================================================================
+
+/**
+ * Input for creating a new example
+ */
+export interface CreateExampleInput {
+  title: string;
+  description: string;
+  status?: Example['status'];
+}
+
+/**
+ * Input for updating an existing example
+ *
+ * All fields are optional - only include fields to update.
+ */
+export interface UpdateExampleInput {
+  title?: string;
+  description?: string;
+  status?: Example['status'];
+}
+
+// ============================================================================
+// Mutation Functions
+// ============================================================================
+
+/**
+ * Create a new example
+ *
+ * @param input - The data for the new example
+ * @returns The created example entity
+ * @throws ApiError if the request fails
+ */
+export function createExample(input: CreateExampleInput): Promise<Example> {
+  return apiClient.post<Example>('/examples', { body: input });
+}
+
+/**
+ * Update an existing example
+ *
+ * @param id - The unique identifier of the example to update
+ * @param input - The fields to update
+ * @returns The updated example entity
+ * @throws ApiError if the request fails
+ */
+export function updateExample(
+  id: string,
+  input: UpdateExampleInput
+): Promise<Example> {
+  return apiClient.patch<Example>(`/examples/${id}`, { body: input });
+}
+
+/**
+ * Delete an example
+ *
+ * @param id - The unique identifier of the example to delete
+ * @throws ApiError if the request fails
+ */
+export function deleteExample(id: string): Promise<void> {
+  return apiClient.delete<void>(`/examples/${id}`);
+}
