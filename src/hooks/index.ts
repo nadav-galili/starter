@@ -1,2 +1,3 @@
 // Barrel export for custom React hooks
-export {};
+export { useTheme, ThemeContext } from './useTheme';
+export type { ThemeContextValue } from './useTheme';

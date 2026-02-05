@@ -1,2 +1,2 @@
 // Barrel export for reusable UI components
-export {};
+export { ThemeProvider } from './ThemeProvider';
