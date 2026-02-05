@@ -3,10 +3,10 @@
   "sessionId": "bb9922ca-1009-4039-8eb4-5f808b6b57fc",
   "status": "running",
   "startedAt": "2026-02-05T13:42:09.664Z",
-  "updatedAt": "2026-02-05T14:06:01.052Z",
-  "currentIteration": 8,
+  "updatedAt": "2026-02-05T14:08:06.771Z",
+  "currentIteration": 9,
   "maxIterations": 15,
-  "tasksCompleted": 8,
+  "tasksCompleted": 9,
   "isPaused": false,
   "agentPlugin": "claude",
   "trackerState": {
@@ -65,8 +65,8 @@
       {
         "id": "US-022",
         "title": "Create Example API Hook",
-        "status": "open",
-        "completedInSession": false
+        "status": "completed",
+        "completedInSession": true
       },
       {
         "id": "US-023",
@@ -156,6 +156,16 @@
       "durationMs": 136316,
       "startedAt": "2026-02-05T14:01:38.272Z",
       "endedAt": "2026-02-05T14:03:54.588Z"
+    },
+    {
+      "iteration": 9,
+      "status": "completed",
+      "taskId": "US-022",
+      "taskTitle": "Create Example API Hook",
+      "taskCompleted": true,
+      "durationMs": 125406,
+      "startedAt": "2026-02-05T14:03:55.645Z",
+      "endedAt": "2026-02-05T14:06:01.051Z"
     }
   ],
   "skippedTaskIds": [],
