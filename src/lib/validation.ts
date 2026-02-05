@@ -223,10 +223,7 @@ export const integerSchema = z.number().int('Must be a whole number');
 /**
  * Date schema (validates Date objects)
  */
-export const dateSchema = z.date({
-  required_error: 'Date is required',
-  invalid_type_error: 'Invalid date',
-});
+export const dateSchema = z.date({ error: 'Invalid date' });
 
 /**
  * Date string schema (validates ISO date strings)
@@ -268,7 +265,7 @@ export const confirmPasswordRefinement = (
 export const enumSchema = <T extends readonly [string, ...string[]]>(
   options: T,
   errorMessage = 'Please select a valid option'
-) => z.enum(options, { errorMap: () => ({ message: errorMessage }) });
+) => z.enum(options, { error: errorMessage });
 
 /**
  * Create an optional field from any schema

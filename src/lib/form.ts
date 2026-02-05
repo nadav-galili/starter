@@ -1,27 +1,30 @@
 /**
- * React Hook Form utilities and typed wrappers
+ * React Hook Form utilities and typed wrappers with Zod integration
  *
  * This module provides a configured useForm wrapper and common form utilities
- * for building performant forms with minimal re-renders.
+ * for building performant forms with minimal re-renders and type-safe validation.
  *
- * @example Basic usage with typed form values
+ * @example Basic usage with Zod schema validation
  * ```tsx
+ * import { z } from 'zod';
  * import { useAppForm } from '@/lib/form';
+ * import { emailSchema, passwordSchema } from '@/lib/validation';
  *
- * interface LoginFormValues {
- *   email: string;
- *   password: string;
- * }
+ * const loginSchema = z.object({
+ *   email: emailSchema,
+ *   password: passwordSchema,
+ * });
  *
  * function LoginForm() {
- *   const { control, handleSubmit, formState: { errors } } = useAppForm<LoginFormValues>({
+ *   const { control, handleSubmit, formState: { errors } } = useAppForm({
+ *     schema: loginSchema,
  *     defaultValues: {
  *       email: '',
  *       password: '',
  *     },
  *   });
  *
- *   const onSubmit = (data: LoginFormValues) => {
+ *   const onSubmit = (data: z.infer<typeof loginSchema>) => {
  *     console.log(data);
  *   };
  *
@@ -30,7 +33,6 @@
  *       <Controller
  *         control={control}
  *         name="email"
- *         rules={{ required: 'Email is required' }}
  *         render={({ field: { onChange, onBlur, value } }) => (
  *           <Input
  *             placeholder="Email"
@@ -50,13 +52,10 @@
  *
  * @example Using form utilities
  * ```tsx
- * import { getFieldError, isFieldRequired } from '@/lib/form';
+ * import { getFieldError } from '@/lib/form';
  *
  * // Get error message for a field
  * const emailError = getFieldError(errors, 'email');
- *
- * // Check if field has required rule
- * const isEmailRequired = isFieldRequired(rules, 'email');
  * ```
  */
 
@@ -78,6 +77,8 @@ import {
   type ControllerFieldState,
   type UseFormStateReturn,
 } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import type { ZodType } from 'zod';
 
 /**
  * Default form configuration optimized for React Native
@@ -89,19 +90,43 @@ const DEFAULT_FORM_CONFIG = {
 };
 
 /**
+ * Extended form props that include Zod schema support
+ */
+export type UseAppFormProps<TFieldValues extends FieldValues = FieldValues> =
+  Omit<UseFormProps<TFieldValues>, 'resolver'> & {
+    /**
+     * Zod schema for form validation
+     * When provided, automatically configures zodResolver
+     */
+    schema?: ZodType<TFieldValues>;
+  };
+
+/**
  * Typed useForm wrapper with sensible defaults for React Native apps
+ * and automatic Zod schema integration
  *
  * Defaults:
  * - mode: 'onBlur' - Validates on blur for better UX
  * - reValidateMode: 'onChange' - Re-validates on change after first validation
  * - shouldFocusError: true - Focuses first field with error on submit
+ * - resolver: zodResolver when schema is provided
  */
 export function useAppForm<TFieldValues extends FieldValues = FieldValues>(
-  props?: UseFormProps<TFieldValues>
+  props?: UseAppFormProps<TFieldValues>
 ): UseFormReturn<TFieldValues> {
+  const { schema, ...restProps } = props ?? {};
+
+  // Type assertion needed due to Zod 4 + hookform resolver type incompatibilities
+  // The runtime behavior is correct - the types just don't align perfectly
+  const resolver = schema
+    ?  
+      (zodResolver(schema as any) as any)
+    : undefined;
+
   return useForm<TFieldValues>({
     ...DEFAULT_FORM_CONFIG,
-    ...props,
+    ...(resolver ? { resolver } : {}),
+    ...restProps,
   });
 }
 
@@ -206,3 +231,6 @@ export {
   type ControllerFieldState,
   type UseFormStateReturn,
 };
+
+// Re-export zodResolver for custom resolver configurations
+export { zodResolver };
