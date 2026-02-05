@@ -2,7 +2,8 @@
  * Typed fetch-based API client
  *
  * Provides a consistent interface for making HTTP requests with
- * automatic base URL prefixing, proper headers, and typed responses.
+ * automatic base URL prefixing, proper headers, typed responses,
+ * and automatic authentication token injection.
  *
  * @example Basic GET request
  * ```tsx
@@ -18,15 +19,16 @@
  * });
  * ```
  *
- * @example With custom headers
+ * @example Skip auth for public endpoint
  * ```tsx
- * const data = await apiClient.get<Data>('/protected', {
- *   headers: { Authorization: 'Bearer token' }
+ * const data = await apiClient.get<Data>('/public/health', {
+ *   skipAuth: true
  * });
  * ```
  */
 
 import { env } from '@/config/env';
+import { useAuthStore } from '@/stores';
 
 /**
  * HTTP methods supported by the API client
@@ -41,6 +43,8 @@ export interface RequestOptions<TBody = unknown> {
   body?: TBody;
   params?: Record<string, string | number | boolean | undefined>;
   signal?: AbortSignal;
+  /** Skip automatic auth token injection for this request */
+  skipAuth?: boolean;
 }
 
 /**
@@ -86,7 +90,7 @@ async function request<TResponse, TBody = unknown>(
   path: string,
   options: RequestOptions<TBody> = {}
 ): Promise<TResponse> {
-  const { headers = {}, body, params, signal } = options;
+  const { headers = {}, body, params, signal, skipAuth = false } = options;
 
   const url = buildUrl(path, params);
 
@@ -94,6 +98,14 @@ async function request<TResponse, TBody = unknown>(
     Accept: 'application/json',
     ...headers,
   };
+
+  // Inject auth token if available and not skipped
+  if (!skipAuth) {
+    const token = useAuthStore.getState().token;
+    if (token) {
+      requestHeaders['Authorization'] = `Bearer ${token}`;
+    }
+  }
 
   if (body !== undefined) {
     requestHeaders['Content-Type'] = 'application/json';
