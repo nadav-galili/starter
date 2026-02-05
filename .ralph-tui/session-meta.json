@@ -1,14 +1,14 @@
 {
-  "id": "897e6ff9-685d-4815-be56-842e3dd80180",
+  "id": "bb9922ca-1009-4039-8eb4-5f808b6b57fc",
   "status": "running",
-  "startedAt": "2026-02-05T12:38:12.400Z",
-  "updatedAt": "2026-02-05T13:06:28.494Z",
+  "startedAt": "2026-02-05T13:42:09.229Z",
+  "updatedAt": "2026-02-05T13:42:09.229Z",
   "agentPlugin": "claude",
   "trackerPlugin": "json",
   "prdPath": "./tasks/prd.json",
-  "currentIteration": 12,
+  "currentIteration": 0,
   "maxIterations": 15,
   "totalTasks": 0,
-  "tasksCompleted": 12,
+  "tasksCompleted": 0,
   "cwd": "/Users/nadavgalili/personal_projects/react-native-apps/starter"
 }
