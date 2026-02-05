@@ -1,4 +1,6 @@
-import { QueryClient } from '@tanstack/react-query';
+import { QueryClient } from "@tanstack/react-query";
+
+import { handleApiError } from "./error-handler";
 
 /**
  * Default configuration for TanStack Query
@@ -39,6 +41,15 @@ const queryClientConfig = {
        * Retry failed mutations once
        */
       retry: 1,
+
+      /**
+       * Global error handler for mutations
+       * Shows toast notification for API errors automatically
+       * Can be overridden per-mutation with onError callback
+       */
+      onError: (error: Error) => {
+        handleApiError(error);
+      },
     },
   },
 };
