@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Pressable, Text as RNText, View } from 'react-native';
 import { useTheme } from '../src/hooks';
 import { Text } from '../src/components';
+import { Container } from '../src/components/ui/Container';
 import type { ThemeMode } from '../src/constants';
 
 export default function HomeScreen() {
@@ -10,7 +11,7 @@ export default function HomeScreen() {
   const themeModes: ThemeMode[] = ['system', 'light', 'dark'];
 
   return (
-    <View className="flex-1 items-center justify-center bg-background px-4">
+    <Container centered>
       <Text variant="h1" className="mb-2">Welcome to Starter</Text>
       <Text variant="body" className="text-muted-foreground mb-4">
         Your Expo Router app is ready!
@@ -51,6 +52,6 @@ export default function HomeScreen() {
       </View>
 
       <StatusBar style={isDark ? 'light' : 'dark'} />
-    </View>
+    </Container>
   );
 }
