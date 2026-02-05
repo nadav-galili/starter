@@ -95,10 +95,11 @@
         "Skip injection for unauthenticated requests (configurable)"
       ],
       "priority": 6,
-      "passes": false,
+      "passes": true,
       "dependsOn": [
         "US-018"
-      ]
+      ],
+      "completionNotes": "Completed by agent"
     },
     {
       "id": "US-020",
@@ -172,6 +173,6 @@
     }
   ],
   "metadata": {
-    "updatedAt": "2026-02-05T13:54:29.717Z"
+    "updatedAt": "2026-02-05T13:56:40.251Z"
   }
 }
