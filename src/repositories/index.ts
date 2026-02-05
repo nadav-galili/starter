@@ -1,2 +1,3 @@
 // Barrel export for repository interfaces and implementations
-export {};
+export * from './interfaces';
+export * from './mock';
